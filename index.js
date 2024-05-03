@@ -32,7 +32,7 @@ function time_validation() {
                 "Espresso": "1.0",
                 "Smoothie": "3",
             };
-            alert("Welcome to our restaurant. This is breakfast hour, let me show you the menu.")
+            alert("Welcome to our restaurant. This is breakfast hour, let me show you the breakfast menu.")
             order();
         } else if (your_hour >= '13:00' && your_hour <= '16:00') {
             first_side_dishes = {
@@ -56,7 +56,7 @@ function time_validation() {
                 "Water": "1",
                 "Beer": "3",
             };
-            alert("Welcome to our restaurant. This is lunch hour, let me show you the menu.")
+            alert("Welcome to our restaurant. This is lunch hour, let me show you the lunch menu.")
             order();
         } else if (your_hour >= '20:00' && your_hour <= '23:00') {
             first_side_dishes = {
@@ -80,7 +80,7 @@ function time_validation() {
                 "Water": "1.5",
                 "Beer": "3.6",
             };
-            alert("Welcome to our restaurant. This is dinner hour, let me show you the menu.")
+            alert("Welcome to our restaurant. This is dinner hour, let me show you the dinner menu.")
             order();
         } else {
             alert("The kitchen is closed.");

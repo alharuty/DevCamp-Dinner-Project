@@ -32,6 +32,7 @@ function time_validation() {
                 "Espresso": "1.0",
                 "Smoothie": "3",
             };
+            alert("Welcome to our restaurant. This is breakfast hour, let me show you the menu.")
             order();
         } else if (your_hour >= '13:00' && your_hour <= '16:00') {
             first_side_dishes = {
@@ -55,7 +56,7 @@ function time_validation() {
                 "Water": "1",
                 "Beer": "3",
             };
-
+            alert("Welcome to our restaurant. This is lunch hour, let me show you the menu.")
             order();
         } else if (your_hour >= '20:00' && your_hour <= '23:00') {
             first_side_dishes = {
@@ -73,12 +74,13 @@ function time_validation() {
                 "Vegetables": "11",
             };
             menu_drinks = {
-                "CocaCola": "1.6",
+                "Cola": "1.6",
                 "Fanta": "1.6",
                 "Nestea": "1.2",
                 "Water": "1.5",
                 "Beer": "3.6",
             };
+            alert("Welcome to our restaurant. This is dinner hour, let me show you the menu.")
             order();
         } else {
             alert("The kitchen is closed.");
@@ -103,7 +105,6 @@ function order() {
         var menu_first_dish_price;
         var menu_drinks_price;
         var menu_second_dish_price;
-        var tips;
     
         function randomComment() {
             let random_number_comment = Math.floor(Math.random() * 3) + 1;
@@ -121,73 +122,49 @@ function order() {
     
         function drink_choosing()
         {
-            let message2 = prompt("And would you like something to drink? (Yes/No)");
-            if (message2 === "Yes") {
-                let choosing_drink = true;
-                while (choosing_drink) {
-                    let message3 = "Please choose your favorite drink from menu.\n";
-                    for (let drinks in menu_drinks)
-                    {
-                        message3 += `${drinks}: $${menu_drinks[drinks]}\n`;
-                    }
-                    let drink_elegido = prompt(message3);
-                    drink_elegido_UpTo = drink_elegido.charAt(0).toUpperCase() + drink_elegido.slice(1).toLowerCase();
-    
-                    if (drink_elegido_UpTo == "" )
-                    {
-                        alert("You didnt write a valid drink.");
-                        drink_choosing();
-                    }
-                    else if (drink_elegido_UpTo in menu_drinks)
-                    {
-                        let my_comment = randomComment();
-                        alert(`${drink_elegido_UpTo} ${my_comment}`);
-                        menu_drinks_price = Number(menu_drinks[drink_elegido_UpTo])
-                        menu_total_price += menu_drinks_price;
-                        choosing_drink = false;
-                    } else {
-                        let retry = prompt("Sorry, we don't have that drink. Would you like to see the menu again? (Yes/No)");
-                        if (retry !== "Yes") {
-                            choosing_drink = false;
-                        }
-                    }
-                }
+            let message3 = "Please choose your favorite drink from menu.\n";
+            for (let drinks in menu_drinks)
+            {
+                message3 += `${drinks}: $${menu_drinks[drinks]}\n`;
+            }
+            let drink_elegido = prompt(message3);
+            drink_elegido_UpTo = drink_elegido.charAt(0).toUpperCase() + drink_elegido.slice(1).toLowerCase();
+
+            if (drink_elegido_UpTo in menu_drinks)
+            {
+                let my_comment = randomComment();
+                alert(`${drink_elegido_UpTo} ${my_comment}`);
+                menu_drinks_price = Number(menu_drinks[drink_elegido_UpTo])
+                menu_total_price += menu_drinks_price;
+            } 
+            else {
+                alert("You didnt write a valid drink.");
+                drink_choosing();
             }
         }
     
         function second_side_choosing() 
         {
-            let message5 = prompt("Would you also like second side dish? (Yes/No)");
-            if (message5 === "Yes") {
-                let choosing_second_side = true;
-                while (choosing_second_side) {
-                    let message6 = "Please choose your favorite dish from menu.\n";
-                    for (let seconds in second_side_dishes)
-                    {
-                        message6 += `${seconds}: $${second_side_dishes[seconds]}\n`;
-                    }
-                    let side_elegido = prompt(message6);
-                    side_elegido_UpTo = side_elegido.charAt(0).toUpperCase() + side_elegido.slice(1).toLowerCase();
-    
-                    if (side_elegido_UpTo == "" )
-                    {
-                        alert("You didnt write a valid dish.");
-                        second_side_choosing();
-                    }
-                    else if (side_elegido_UpTo in second_side_dishes)
-                    {
-                        let my_third_comment = randomComment();
-                        alert(`${side_elegido_UpTo} ${my_third_comment}`);
-                        menu_second_dish_price = Number(second_side_dishes[side_elegido_UpTo])
-                        menu_total_price += menu_second_dish_price;
-                        choosing_second_side = false;
-                    } else {
-                        let retry2 = prompt("Sorry, we don't have that dish. Would you like to see the menu again? (Yes/No)");
-                        if (retry2 !== "Yes") {
-                            choosing_second_side = false;
-                        }
-                    }
-                }
+            
+            let message6 = "Please choose your favorite second dish from menu.\n";
+            for (let seconds in second_side_dishes)
+            {
+                message6 += `${seconds}: $${second_side_dishes[seconds]}\n`;
+            }
+            let side_elegido = prompt(message6);
+            side_elegido_UpTo = side_elegido.charAt(0).toUpperCase() + side_elegido.slice(1).toLowerCase();
+
+            if (side_elegido_UpTo in second_side_dishes)
+            {
+                let my_third_comment = randomComment();
+                alert(`${side_elegido_UpTo} ${my_third_comment}`);
+                menu_second_dish_price = Number(second_side_dishes[side_elegido_UpTo])
+                menu_total_price += menu_second_dish_price;
+            
+            } 
+            else {
+                alert("You didnt write a valid dish.");
+                second_side_choosing();
             }
         }
     
@@ -201,12 +178,7 @@ function order() {
             let plato_elegido = prompt(message);
             plato_elegido_UpTo = plato_elegido.charAt(0).toUpperCase() + plato_elegido.slice(1).toLowerCase();
     
-            if (plato_elegido_UpTo == "" )
-            {
-                alert("You didnt write a valid dish.");
-                first_side_choosing();
-            }
-            else if (plato_elegido_UpTo in first_side_dishes)
+            if (plato_elegido_UpTo in first_side_dishes)
             {
                 let my_second_comment = randomComment();
                 alert(`${plato_elegido_UpTo} ${my_second_comment}`);
@@ -214,59 +186,14 @@ function order() {
                 menu_total_price += menu_first_dish_price;
                 second_side_choosing();
                 drink_choosing();
-                let want_tips = prompt("Would you like to add some tip for our good job? (Yes/No)")
-    
-                if (want_tips === 'Yes') { // si dice que sí
-                    tips = prompt("How much?") // preguntamos cuánto
-                    menu_total_price = menu_total_price + Number(tips); // y sumamos dicho valor a nuestro menu_price
-                } else { // si dice que no
-                    menu_total_price = menu_total_price; // menu price queda igual
-                }
+                alert("Thank you for your order!");
             }
             else
             {
-                let randomNumber = Math.floor(Math.random() * 2); // Generamos un número entero aleatorio entre 0 y 1
-                if ( randomNumber === 1) { 
-                    let pregunta = prompt("We dont have that dish in our menu, but we can prepare it for extra $9, do you agree? (Yes/No)")
-                    {
-                        if ( pregunta  === "Yes" )
-                        {
-                            menu_drinks[plato_elegido_UpTo] = "$9";
-                            menu_first_dish_price = 9;
-                            alert("Ok, perfect, it will take us 5 minuts to prepare.");
-                            menu_total_price = menu_total_price + 9;
-                            second_side_choosing();
-                            drink_choosing();
-                        }
-                        else
-                        {
-                            let pregunta2 = prompt("Do you wanna see our menu again? (Yes/No)")
-                            {
-                                if (pregunta2 === "Yes")
-                                {
-                                    first_side_choosing();
-                                }
-                                else {
-                                    alert("We are so sorry for no satisfy your desires.")
-                                }
-                            }
-                        }
-                    }
-                }
-                else {
-                    let pregunta3 = prompt("Sorry, we cant prepare this kind of dish. Would you like to see our menu again? (Yes/No)");
-                    if ( pregunta3 === "Yes")
-                    {
-                        first_side_choosing();
-                    }
-                    else
-                    {
-                        alert("We are so sorry for no satisfy your desires.")
-                    }
-                }
+                alert("You didnt write a valid dish.");
+                first_side_choosing();
             }
-    
-            let order_summary = `Thank you for your order!\n Order Summary:\n`;
+            let order_summary = `Order Summary:\n`;
     
             if (plato_elegido_UpTo) {
                 order_summary += ` ${plato_elegido_UpTo} - $${menu_first_dish_price}\n`;
@@ -279,19 +206,12 @@ function order() {
             if(drink_elegido_UpTo) {
                 order_summary += ` ${drink_elegido_UpTo} - $${menu_drinks_price}\n`;
             }
-            if(tips > 0) {
-                order_summary += ` Tips: $${tips}\n`;
-            }
-    
             order_summary += `Total: $${menu_total_price}\n`;
     
             alert(order_summary);
             
         }
-            
         first_side_choosing();
-    
     }
     menu_ordering();
 }
-

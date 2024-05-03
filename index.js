@@ -93,8 +93,6 @@ function time_validation() {
 
 time_validation();
 
-
-
 function order() {
     function menu_ordering() {
 

@@ -50,7 +50,7 @@ function time_validation() {
                 "Vegetables": "9",
             };
             menu_drinks = {
-                "CocaCola": "1.5",
+                "Cola": "1.5",
                 "Fanta": "1.5",
                 "Nestea": "1.0",
                 "Water": "1",
